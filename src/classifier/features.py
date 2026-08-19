@@ -22,17 +22,18 @@ def extract_features(prompt: str) -> dict:
     
     # Tier-Specific Instruction Matching
     # Tier 1: reformatting, extraction, basic Q&A
-    t1_words = {'extract', 'format', 'convert', 'what', 'who', 'where', 'when', 'find', 'parse'}
+    t1_words = {'extract', 'format', 'convert', 'what', 'who', 'where', 'when', 'find', 'remove', 'email', 'clean', 'parse', 'capital'}
     
     # Tier 2: summarization, classification, structured analysis
-    t2_words = {'summarize', 'classify', 'categorize', 'group', 'analyze', 'compare', 'difference', 'draft'}
+    t2_words = {'summarize', 'classify', 'categorize', 'group', 'analyze', 'compare', 'difference', 'draft', 'sentiment', 'bullet points', 
+                'json', 'sql', 'rewrite'}
     
     # Tier 3: multi-step reasoning, creative generation, nuanced judgment calls
-    t3_words = {'critique', 'reason', 'judge', 'design', 'architect', 'create', 'imagine', 'evaluate', 'synthesize', 'write a story', 'diagnose'}
+    t3_words = {'critique', 'reason', 'judge', 'design', 'architect', 'imagine', 'evaluate', 'synthesize', 'mitigation', 'diagnose'}
     
     return {
-        "char_length": len(prompt),
-        "word_count": word_count,
+        #"char_length": len(prompt),            # commented out cause it caused the model to predict high every time
+        #"word_count": word_count,
         "has_context": has_context,
         "format_complexity": format_complexity,
         "num_constraints": num_constraints,

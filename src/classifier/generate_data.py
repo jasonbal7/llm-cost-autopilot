@@ -57,8 +57,8 @@ async def main():
     df = pd.DataFrame(all_data)
     
     # Save the dataset
-    df.to_csv("data/training_data.csv", index=False)
-    print(f"\nSuccessfully generated {len(df)} prompts and saved to data/training_data.csv")
+    df.to_csv("data/gpt_training_data.csv", index=False)
+    print(f"\nSuccessfully generated {len(df)} prompts and saved to data/gpt_training_data.csv")
 
 if __name__ == "__main__":
     asyncio.run(main())
