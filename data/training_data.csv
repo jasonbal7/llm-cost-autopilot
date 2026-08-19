@@ -1,0 +1,267 @@
+prompt,tier
+"Extract all email addresses from this text and list them one per line",low
+"Convert every word in this paragraph to uppercase",low
+"Remove all duplicate lines from this list while keeping order",low
+"Sort these names alphabetically and remove duplicates",low
+"Replace underscores with spaces in each item",low
+"Find every number in this sentence and print them in ascending order",low
+"Remove empty lines from the following text block",low
+"Capitalize the first letter of each word in this title",low
+"Split this paragraph into sentences and number each sentence",low
+"Format these dates as YYYY-MM-DD",low
+"Extract all hashtags from this social media post",low
+"Convert this list of numbers to a comma-separated string",low
+"Count how many words are in this text",low
+"Add a bullet point to each line in this list",low
+"Remove all punctuation from this paragraph",low
+"Extract the phone numbers and ignore all other text",low
+"Replace each tab with a single space",low
+"Trim leading and trailing whitespace from each line",low
+"Find all URLs in this message and list them alphabetically",low
+"Rewrite these names in reverse alphabetical order",low
+"Replace all spaces with hyphens in this title",low
+"Remove repeated words from this sentence",low
+"Convert this text to lowercase",low
+"Add a heading before each section in this document",low
+"Extract only the bold terms from this markdown text",low
+"Separate this text into key and value pairs",low
+"Normalize all repeated whitespace to a single space",low
+"Identify all capitalized words in this sentence",low
+"Extract only the years mentioned in this passage",low
+"Remove all stop words from this sentence",low
+"Convert this list into a numbered list",low
+"Find all occurrences of the word error in this log",low
+"Remove duplicate characters from each word",low
+"Translate this short phrase into plain ASCII only",low
+"Delete all non-alphabetic characters from this text",low
+"Replace every comma with a semicolon",low
+"Extract the first word from each line",low
+"Sort the lines by length from shortest to longest",low
+"Convert these currency amounts to plain numbers",low
+"Add a label prefix to each item in this list",low
+"Extract the domain names from these URLs",low
+"Replace all newline characters with spaces",low
+"Make each sentence start on a new line",low
+"Find the longest word in this paragraph",low
+"Remove all markdown headings and keep only the body text",low
+"Convert each list item to lowercase and sort it",low
+"Extract all names that begin with the letter A",low
+"Find every integer in this excerpt and output them as a list",low
+"Remove extra spaces between words",low
+"Rename each file name to lowercase in this directory listing",low
+"Extract the content inside brackets from this text",low
+"Turn these notes into a clean one-line-per-item list",low
+"Return only the items that contain the word urgent",low
+"Replace all repeated spaces with a single space",low
+"Extract the IP addresses from this log",low
+"Add numbering to each row in this table",low
+"Format these dates as day month year",low
+"Identify all words that appear more than once",low
+"Remove all HTML tags from this text",low
+"Find every adjective in this sentence",low
+"Convert the list into a JSON array",low
+"Extract only the even numbers from this data",low
+"Remove the first and last character from each line",low
+"Make this paragraph title case",low
+"Split the sentence into words and keep only unique ones",low
+"Replace all colons with dashes",low
+"Find the smallest number in this list",low
+"Extract all product codes from this inventory text",low
+"Remove all trailing spaces from each line",low
+"Format each email as lowercase and unique",low
+"Convert this text into a table with three columns",low
+"List only the lines that end with a number",low
+"Remove all duplicate characters from the full text",low
+"Extract the initials from these names",low
+"Rename all file paths to use forward slashes",low
+"Extract the last word from each sentence",low
+"Convert a colon-separated list into a newline-separated list",low
+"Find all ZIP codes present in this address block",low
+"Translate the following list into CSV format",low
+"Check whether each item in this list is unique and report duplicates",low
+"Split this text by semicolons and preserve the order",low
+"Delete all whitespace characters from this string",low
+"Find every word longer than eight letters in this paragraph",low
+"Keep only lines that include the word urgent",low
+"Normalize all dates to ISO format in this document",low
+"Remove all comments from this code snippet",low
+"List each sentence in reverse order",low
+"Convert this plain text list to markdown bullets",low
+"Extract only the names of cities from this text",low
+"Add a comma after each word in this sentence",low
+"Find the median value in this set of numbers",low
+"Extract only the lines containing a colon",low
+"Remove all numeric digits from this passage",low
+"Change all slashes to backslashes in these paths",low
+"Filter this list so only strings with the letter z remain",low
+"Convert each row in this table to a JSON object",low
+"Separate this CSV-like text into columns and print each column header",low
+"Extract every value that appears in parentheses",low
+"Strip the markdown emphasis markers from this text",low
+"Replace each newline with a tab in this passage",low
+"List only the unique values in this collection",low
+"Find the longest sentence in this paragraph",low
+"Sort these values numerically from largest to smallest",low
+"Keep only the lines that start with a number",low
+"Convert this sentence into kebab-case words",low
+"Extract the substring between the first and second underscore",low
+"Remove the first word from every line",low
+"List all words that contain a digit",low
+"Replace all ampersands with the word and",low
+"Split this list by commas and trim each item",low
+"Extract the text after the last slash in these paths",low
+"Remove all repeated punctuation marks from this sentence",low
+"Find the average of these numbers and return the result",low
+"List all names ending in the letter y",low
+"Convert this text to sentence case",low
+"Remove any trailing punctuation from each item",low
+"Summarize this product review in one sentence",medium
+"Classify this email as urgent, normal, or spam",medium
+"Summarize the meeting notes into three action items",medium
+"Determine the sentiment of this customer feedback",medium
+"Classify these job descriptions by seniority level",medium
+"Produce a concise summary of this article for a beginner",medium
+"Categorize each sentence by topic",medium
+"Identify the main issue in this bug report",medium
+"Summarize the advantages and disadvantages of this proposal",medium
+"Classify the following messages by intent",medium
+"Detect the tone of this message as positive, neutral, or negative",medium
+"Summarize this research abstract in plain English",medium
+"Group these customer complaints by theme",medium
+"Extract the key findings from this report",medium
+"Classify this product description as luxury, budget, or midrange",medium
+"Summarize the steps in this tutorial into a checklist",medium
+"Label each paragraph with the most relevant category",medium
+"Decide whether this review is recommending the product",medium
+"Summarize this legal notice in everyday language",medium
+"Categorize these support tickets by department",medium
+"Identify the primary audience of this article",medium
+"Summarize this conversation in a few bullet points",medium
+"Classify each news headline by topic",medium
+"Extract the main problem and proposed solution from this text",medium
+"Summarize the benefits of this service in three points",medium
+"Categorize these expenses as fixed, variable, or discretionary",medium
+"Find the sentiment polarity of each review in this batch",medium
+"Summarize the differences between these two policies",medium
+"Label this paragraph as factual, opinion, or mixed",medium
+"Create a short summary of this employee handbook section",medium
+"Classify the following events as positive, negative, or neutral",medium
+"Identify the main takeaway from this analysis",medium
+"Group these product features by user need",medium
+"Summarize this transcript for a manager",medium
+"Label each sentence with the appropriate emotion",medium
+"Determine whether this statement is a complaint, request, or compliment",medium
+"Summarize the risks described in this document",medium
+"Classify these support emails by urgency",medium
+"Extract the key action items from this project update",medium
+"Summarize the causes and effects in this paragraph",medium
+"Categorize these blog titles by content type",medium
+"Identify the overall mood of this article",medium
+"Summarize the procedure described in this manual",medium
+"Classify this testimonial as authentic or suspicious",medium
+"Detect whether this message is promotional, informational, or transactional",medium
+"Provide a one-paragraph summary of this research paper",medium
+"Label each review with one of the following labels: happy, neutral, unhappy",medium
+"Summarize the pros, cons, and tradeoffs in this recommendation",medium
+"Classify these incident reports by severity",medium
+"Identify the main theme in this poem",medium
+"Summarize the timeline in this case study",medium
+"Group these questions by topic",medium
+"Determine if this text is an opinion or a fact",medium
+"Classify this excerpt as educational, entertaining, or persuasive",medium
+"Summarize the issue and resolution in this support thread",medium
+"Label each article as business, tech, sports, or culture",medium
+"Detect the likely author intent in this passage",medium
+"Summarize the negotiation points in this email",medium
+"Categorize these bug reports by product area",medium
+"Identify the likely customer segment for this product pitch",medium
+"Summarize the latest changes in this release note",medium
+"Classify each product review by value, quality, and design",medium
+"Produce a brief overview of this onboarding document",medium
+"Determine the risk level of this insurance description",medium
+"Summarize the training instructions into simple steps",medium
+"Sort these customer comments into praise, criticism, and suggestions",medium
+"Identify the central claim in this argument",medium
+"Summarize this case note for a non-specialist",medium
+"Classify these sentences as objective, subjective, or mixed",medium
+"Extract the main events from this timeline",medium
+"Summarize the debate in ten words or fewer",medium
+"Label each message as positive, neutral, or negative",medium
+"Detect the likely intent behind this request",medium
+"Summarize the advantages of this approach in plain language",medium
+"Classify these ingredients by dietary category",medium
+"Read this customer support transcript and identify the root cause before proposing a fix and prevention plan",high
+"Compare two product designs and recommend the better option with tradeoffs and justification",high
+"Given this dataset and business goal, decide which metric to prioritize and explain why",high
+"Review this hiring rubric and rank the candidates with a clear reasoning chain",high
+"Examine this incident report and propose a prevention plan with specific action steps",high
+"Evaluate this proposal against cost, quality, and timeline, then give a final decision",high
+"Analyze these test results and determine the likely root cause of the failure",high
+"Build a step-by-step launch plan for a small online business from this budget and timeline",high
+"Read this legal summary and identify the main legal risks and mitigation strategies",high
+"Compare three software solutions and recommend one for a small team with constraints",high
+"Assess this candidate profile against the job description and explain the fit in detail",high
+"Use this customer feedback to prioritize the top product improvements and justify the ranking",high
+"Trace the likely causes of a sales decline from this monthly report and propose corrective actions",high
+"Design a training plan for a new employee using this role description and company context",high
+"Evaluate whether this startup idea is viable under the current market conditions",high
+"Analyze this insurance claim and explain whether it is likely valid and why",high
+"From this budget and forecast, determine the most likely cash problem and suggest a fix",high
+"Create a phased project plan from this vague requirement list and identify dependencies",high
+"Review this bug report and propose a debugging sequence with likely checkpoints",high
+"Given these data points and constraints, choose the best scheduling strategy and explain tradeoffs",high
+"Evaluate this product roadmap and identify the biggest missing risk and mitigation strategy",high
+"Interpret this policy document and explain what the user must do, what is optional, and what is forbidden",high
+"Build a risk matrix for this project from the summary provided and classify each risk",high
+"Analyze this customer journey and recommend where to reduce churn with prioritized actions",high
+"Assess this code review and identify the most important changes to approve or reject",high
+"Use this sales data to explain which region is underperforming and why, then propose a recovery plan",high
+"Draft a decision memo for leadership based on these tradeoffs and recommend a course of action",high
+"Read this medical summary and explain the likely diagnosis, key evidence, and next steps",high
+"Infer what went wrong in this deployment from the logs and timeline, then propose preventive controls",high
+"Compare this pricing model to the market and suggest a pricing strategy with rationale",high
+"Analyze this supply chain issue and propose a mitigation plan with risk owners and milestones",high
+"Choose the best onboarding approach for this team using the constraints and staffing information given",high
+"Evaluate this contract clause for potential liability, negotiation points, and red flags",high
+"Given this research summary, decide which experiment should be run next and explain the decision",high
+"Map the user pain points in this interview transcript to product opportunities and prioritize them",high
+"Review the risk of adopting this new technology for a startup and recommend a rollout approach",high
+"Create a decision tree from this customer support policy that covers common edge cases",high
+"Determine the root cause of a quality issue from this manufacturing report and define a corrective action plan",high
+"Plan an outreach campaign from this persona and channel analysis, with sequencing and success metrics",high
+"Analyze this incident timeline and recommend a communication strategy for different stakeholders",high
+"Compare these hiring policies and suggest a more equitable alternative with tradeoffs",high
+"Deduce the most likely missing requirement from this feature request and propose a validation plan",high
+"Build a test strategy for this application from the requirement summary and risk areas",high
+"Evaluate this business case and estimate the probability of success with assumptions and caveats",high
+"Given this customer profile, recommend the best product bundle and explain the fit",high
+"Analyze this competitor comparison and state the strongest differentiator and biggest vulnerability",high
+"Create a step-by-step remediation plan for this compliance gap with owners and deadlines",high
+"Review this migration plan and highlight the biggest execution risks and mitigation actions",high
+"Use this dataset to forecast demand and explain the assumptions behind your estimate",high
+"Assess whether this partnership is beneficial using the provided metrics and strategic criteria",high
+"Analyze this security incident and recommend immediate containment actions and a longer-term response plan",high
+"Based on this roadmap and team size, suggest the best release strategy and dependency ordering",high
+"Evaluate this product complaint trend and propose corrective actions with expected impact",high
+"Determine the likely cause of low adoption in this usage report and recommend next experiments",high
+"Design a contingency plan for this operations disruption with triggers and escalation paths",high
+"Use this survey data to identify the biggest unmet need and propose a solution direction",high
+"Analyze this performance review and uncover team patterns, strengths, and development priorities",high
+"Compare the benefit and risk of each alternative in this decision brief and recommend one",high
+"Recommend a strategy to reduce acquisition cost from this funnel data and justify the plan",high
+"Identify the core decision in this policy debate and justify the winning position with evidence",high
+"Build a realistic sprint plan for this team from the project description and current constraints",high
+"Analyze this customer classification and propose a retention campaign for each segment",high
+"Evaluate whether this feature should be built now or later, given the roadmap and user demand",high
+"From this support history, determine which fix will provide the most impact and why",high
+"Design a knowledge base structure from this fragmented documentation and define taxonomy rules",high
+"Assess the viability of this pricing experiment with the available data and audit risk",high
+"Develop a triage process for this incoming support volume with prioritization rules and escalation",high
+"Review this product launch plan and highlight dependencies, blockers, and contingency actions",high
+"Predict the most probable failure mode from this system description and propose a monitoring strategy",high
+"Analyze this market entry case and recommend a launch sequence with country and channel focus",high
+"Convert this collection of stakeholder comments into a prioritized action list with rationales",high
+"Determine the best resource allocation plan from this project summary and staffing constraints",high
+"Evaluate this acquisition target using the criteria in this memo and provide a recommendation",high
+"Build a cross-functional response plan for this operational risk scenario with owners and milestones",high
+"Assess the sustainability of this business model using the supplied assumptions and market signals",high

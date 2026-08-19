@@ -1,0 +1,8 @@
+# Maps quality tier to the model_id from our registry
+tiers:
+  low: "claude-haiku-4-5"    # Tier 1 (Simple)
+  medium: "gpt-4o-mini"      # Tier 2 (Moderate)
+  high: "claude-sonnet-4-6"  # Tier 3 (Complex) 
+
+# Fallback model if the router fails or confidence is too low
+fallback: "gpt-4o"
