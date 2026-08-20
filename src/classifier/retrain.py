@@ -24,9 +24,6 @@ def retrain_from_failures():
     
     # Combine the old data with the newly corrected data
     combined_df = pd.concat([main_df, new_examples], ignore_index=True)
-    
-    # THE FIX: By keeping the "last" duplicate, the old incorrect row from main_df is deleted, 
-    # and the newly appended correct row from new_examples survives!
     combined_df = combined_df.drop_duplicates(subset=["prompt"], keep="last")
     
     # Save the updated, smarter dataset back to disk

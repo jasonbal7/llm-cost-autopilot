@@ -20,7 +20,7 @@ def _ensure_csv_headers():
         with open(ESCALATION_LOG_PATH, "w", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([
-                "timestamp", "prompt", "original_model", "judge_model",
+                "timestamp", "prompt", "task_type", "original_model", "judge_model",
                 "score", "passed", "cost_delta_usd", "reason"
             ])
             
@@ -67,6 +67,7 @@ class QualityVerifier:
             writer.writerow([
                 datetime.now(timezone.utc).isoformat(), # Fixed timezone awareness
                 prompt,
+                eval_result.task_type,
                 initial_response.model_id,
                 judge_config.model_id,
                 eval_result.score,
@@ -77,7 +78,6 @@ class QualityVerifier:
 
         # If the cheap model performed poorly, we need to log it so the system learns from the mistake
         if not eval_result.passed:
-            # THIS IS THE SECRET SAUCE: We forcibly escalate the label.
             # If the ML model guessed "medium" and failed, the correct answer must be "high".
             escalated_tier = "high" if predicted_tier == "medium" else "medium"
             

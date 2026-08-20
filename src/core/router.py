@@ -1,47 +1,106 @@
 import yaml
-import asyncio
+import csv
+import os
+from datetime import datetime, timezone
 from src.classifier.predict import predict_complexity
 from src.core.registry import MODEL_REGISTRY
 from src.providers.unified import send_request, ModelResponse
-from src.verifier.verifier import QualityVerifier
-from src.classifier.features import extract_features
+from src.verifier.evaluators import evaluate_response
+
+MASTER_LOG_PATH = "data/master_audit_log.csv"
+ESCALATION_LOG_PATH = "data/escalation_log.csv"
+FEEDBACK_LOG_PATH = "data/feedback_failures.csv"
+
+def _ensure_logs():
+    """Ensure all logs exist with their updated headers."""
+    os.makedirs("data", exist_ok=True)
+    if not os.path.exists(MASTER_LOG_PATH):
+        with open(MASTER_LOG_PATH, "w", newline="") as f:
+            csv.writer(f).writerow([
+                "timestamp", "tier_predicted", "model_used", 
+                "actual_cost", "hypothetical_max_cost", "savings_usd", "latency_ms", "escalated"
+            ])
+    if not os.path.exists(ESCALATION_LOG_PATH):
+        with open(ESCALATION_LOG_PATH, "w", newline="") as f:
+            csv.writer(f).writerow([
+                "timestamp", "prompt", "task_type", "original_model", "judge_model",
+                "score", "passed", "cost_delta_usd", "reason"
+            ])
+    if not os.path.exists(FEEDBACK_LOG_PATH):
+        with open(FEEDBACK_LOG_PATH, "w", newline="") as f:
+            csv.writer(f).writerow(["prompt", "tier", "source", "logged_at"])
 
 class PromptRouter:
     def __init__(self, config_path="configs/routing.yaml"):
-        # Load the YAML configuration file so we know which models map to which tiers
         with open(config_path, "r") as file:
             self.config = yaml.safe_load(file)
-            
-        # Initialize our background verifier, defaulting to GPT-4o as the judge
-        self.verifier = QualityVerifier(
-            judge_model_key=self.config.get("fallback", "gpt-4o"),
-            threshold=0.80
-        )
+        
+        self.judge_key = self.config.get("fallback", "gpt-4o")
+        self.threshold = 0.80
+        _ensure_logs()
 
     async def route(self, prompt: str, system_prompt: str = "You are a helpful assistant.") -> ModelResponse:
-        # 1. Ask the machine learning model which tier this prompt belongs to (low, medium, high)
         tier = predict_complexity(prompt)
-        
-        # --- NEW DEBUGGING PRINTS ---
-        features = extract_features(prompt)
-        print(f"\n[DEBUG] Extracted Features : {features}")
-        print(f"[DEBUG] Model Predicted    : {tier.upper()}")
-        # ----------------------------
-        
-        # 2. Look up the specific model ID assigned to that tier in the YAML file
         model_key = self.config["tiers"].get(tier, self.config["fallback"])
         
-        # Safety check: if the YAML has a typo, use the fallback model
         if model_key not in MODEL_REGISTRY:
             model_key = self.config["fallback"]
             
         target_config = MODEL_REGISTRY[model_key]
+        judge_config = MODEL_REGISTRY[self.judge_key]
         
-        # 3. Send the API request to the chosen model and wait for the answer
-        response = await send_request(prompt, target_config, system_prompt=system_prompt)
+        # 1. Fast generation
+        candidate = await send_request(prompt, target_config, system_prompt)
         
-        # 4. Fire-and-forget: Start the background verification loop asynchronously.
-        # This does not block the return statement below, meaning the user gets their answer instantly!
-        asyncio.create_task(self.verifier.verify_async(prompt, response, tier))
+        # 2. Prepare default logging metrics
+        final_response = candidate
+        escalated = False
+        hypothetical_cost = (candidate.prompt_tokens * judge_config.cost_per_input_token) + \
+                            (candidate.completion_tokens * judge_config.cost_per_output_token)
+        savings = hypothetical_cost - candidate.cost_usd
+
+        # 3. Blocking Verification (Only if we didn't already use the highest tier)
+        if target_config.model_id != judge_config.model_id:
+            reference = await send_request(prompt, judge_config, system_prompt)
+            
+            eval_res = await evaluate_response(
+                prompt=prompt, 
+                candidate_response=candidate.content, 
+                reference_response=reference.content, 
+                judge_model_key=self.judge_key, 
+                threshold=self.threshold
+            )
+            
+            cost_delta = reference.cost_usd - candidate.cost_usd
+            
+            # Log the background check
+            with open(ESCALATION_LOG_PATH, "a", newline="") as f:
+                csv.writer(f).writerow([
+                    datetime.now(timezone.utc).isoformat(), prompt, eval_res.task_type, 
+                    candidate.model_id, judge_config.model_id, eval_res.score, 
+                    eval_res.passed, round(cost_delta, 6), eval_res.reason
+                ])
+
+            # 4. Handle Failure: Escalate and Replace!
+            if not eval_res.passed:
+                escalated = True
+                final_response = reference  # The user gets the better answer
+                savings = 0.0               # We spent money on both, so savings are wiped out
+                
+                escalated_tier = "high" if tier == "medium" else "medium"           # uprade one tier of model if escalated
+                with open(FEEDBACK_LOG_PATH, "a", newline="") as f:
+                    csv.writer(f).writerow([prompt, escalated_tier, "auto_escalation", datetime.now(timezone.utc).isoformat()])
+                
+                print(f"\n[ESCALATION TRIGGERED] {candidate.model_id} failed {eval_res.task_type} check. Score: {eval_res.score}.")
+                print(f"Reason: {eval_res.reason}")
+                print(f"Returning superior {self.judge_key} result to user.")
         
-        return response
+        # 5. Master Audit Log
+        with open(MASTER_LOG_PATH, "a", newline="") as f:
+            csv.writer(f).writerow([
+                datetime.now(timezone.utc).isoformat(), tier, final_response.model_id, 
+                round(final_response.cost_usd, 6), round(hypothetical_cost, 6), 
+                round(savings, 6), final_response.latency_ms, escalated
+            ])
+            
+        return final_response
